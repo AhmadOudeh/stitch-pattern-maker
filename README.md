@@ -7,7 +7,7 @@ Everything runs in the browser; no image ever leaves the device.
 ## Use it
 
 - **iPhone / iPad:** open https://ahmadoudeh.github.io/stitch-pattern-maker/ in Safari,
-  tap Share → *Add to Home Screen*. After the first visit it works without internet.
+  tap Share → *Add to Home Screen*, then open the new icon once while online. After that it works without internet.
 - **Computer, offline:** double-click `dist/stitch-pattern-maker.html`. It is one file with
   everything inside, so you can also copy it to a USB stick.
 
@@ -16,7 +16,7 @@ Everything runs in the browser; no image ever leaves the device.
 | Sheet size | Typical products |
 |---|---|
 | A4, 21 × 29.7 cm | Vlieseline Solufix (A4 packs), most packs sold in Europe |
-| US Letter, 21.6 × 27.9 cm | Sulky Stick'n Stitch, Sulky Sticky Fabri-Solvy, Pellon Print-Stitch-Dissolve |
+| US Letter, 21.6 × 27.9 cm | Sulky Stick'n Stitch, Sulky Sticky Fabri-Solvy (Pellon Print-Stitch-Dissolve is printable but not sticky) |
 
 Pick the same size in step 4. The page tells you the widest logo that fits on one sheet
 (A4: 26 cm, Letter: 24 cm for a wide logo) and offers a button to shrink to it.

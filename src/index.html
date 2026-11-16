@@ -271,17 +271,17 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
       <div class="field">
         <div class="field-top"><label for="widthNum" data-i18n="logoW"></label><span class="val" id="heightOut"></span></div>
         <div class="num">
-          <input type="number" id="widthNum" min="3" max="40" step="0.5" value="22" inputmode="decimal"><span class="unit" data-i18n="cm"></span>
+          <input type="text" id="widthNum" value="22" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="cm"></span>
           <input type="range" id="widthRange" min="5" max="35" step="0.5" value="22" data-i18n-aria="ariaWidth">
         </div>
       </div>
       <div class="field">
         <div class="field-top"><label for="chest" data-i18n="chest"></label></div>
-        <div class="num"><input type="number" id="chest" min="30" max="90" step="1" value="54" inputmode="decimal"><span class="unit" data-i18n="chestUnit"></span></div>
+        <div class="num"><input type="text" id="chest" value="54" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="chestUnit"></span></div>
       </div>
       <div class="field">
         <div class="field-top"><label for="collar" data-i18n="collar"></label></div>
-        <div class="num"><input type="number" id="collar" min="0" max="40" step="0.5" value="8" inputmode="decimal"><span class="unit" data-i18n="cm"></span></div>
+        <div class="num"><input type="text" id="collar" value="8" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="cm"></span></div>
       </div>
     </div>
 
@@ -779,7 +779,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
     for (let r = 0; r <= C.rows; r++) if (r % 10 === 0 || r === C.rows) { const y = oy + r * z; g.moveTo(ox, y); g.lineTo(ox + gw, y); }
     g.stroke();
 
-    g.fillStyle = '#5b6170'; g.font = '500 10px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillStyle = '#5b6170'; g.font = '500 10px "IBM Plex Mono", ui-monospace, monospace'; g.direction = 'ltr';
     g.textAlign = 'center'; g.textBaseline = 'bottom';
     for (let c = 10; c <= C.cols; c += 10) g.fillText(String(c), ox + c * z, oy - 12);
     g.textAlign = 'right'; g.textBaseline = 'middle';
@@ -894,9 +894,10 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
 
       const fy = plan.ph - PM - FOOT + 6;
       doc.setDrawColor(43, 45, 51); doc.setFillColor(43, 45, 51); doc.setLineWidth(0.3);
-      if (S.sym === 'fill') doc.rect(PM, fy - 3, 3.5, 3.5, 'F');
-      else { doc.rect(PM, fy - 3, 3.5, 3.5, 'S'); doc.line(PM + 0.7, fy - 2.3, PM + 2.8, fy - 0.2); doc.line(PM + 2.8, fy - 2.3, PM + 0.7, fy - 0.2); }
-      pdfText(doc, t('pdfCross', { t: S.thread.name, s: n.strands }), PM + 5.5, fy, { bold: true, gray: 30, maxW: fullW - 5.5 });
+      const kx = rtl ? plan.pw - PM - 3.5 : PM; // the key square sits where reading starts
+      if (S.sym === 'fill') doc.rect(kx, fy - 3, 3.5, 3.5, 'F');
+      else { doc.rect(kx, fy - 3, 3.5, 3.5, 'S'); doc.line(kx + 0.7, fy - 2.3, kx + 2.8, fy - 0.2); doc.line(kx + 2.8, fy - 2.3, kx + 0.7, fy - 0.2); }
+      pdfText(doc, t('pdfCross', { t: S.thread.name, s: n.strands }), rtl ? kx - 2 : PM + 5.5, fy, { bold: true, gray: 30, align: al, maxW: fullW - 5.5 });
       pdfText(doc, t('pdfCount', { c: S.count, p: fmt(S.count / 2.54), a: C.cols, b: C.rows, n: C.crosses.toLocaleString('en-US'), w: fmt(n.wcm), h: fmt(n.hcm) }), sx, fy + 5, { align: al, maxW: fullW });
       pdfText(doc, t('pdfStart', { k: n.skeinText }), sx, fy + 9.5, { align: al, maxW: fullW });
     }
@@ -1002,7 +1003,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
     // measurements
     const ann = light ? '#15171c' : '#ffffff';
     g.strokeStyle = ann; g.fillStyle = ann; g.lineWidth = 1; g.globalAlpha = 0.85;
-    g.font = '500 12px "IBM Plex Mono", ui-monospace, monospace';
+    g.font = '500 12px "IBM Plex Mono", ui-monospace, monospace'; g.direction = 'ltr';
     const dimY = top + lhc + 2.2;
     let [p1x, p1y] = P(left, dimY), [p2x] = P(left + lwc, dimY);
     g.beginPath(); g.moveTo(p1x, p1y); g.lineTo(p2x, p1y);
@@ -1061,6 +1062,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
 
   function updatePages() {
     if (!S.bbox) return;
+    if (!saving) { setStatus(''); pendingShare = null; $('shareWrap').hidden = true; }
     const p = paperName(), chart = S.out === 'chart', stab = !chart && S.method === 'stabilizer';
     $('paperLbl').textContent = t(stab ? 'sheetLbl' : 'paperLbl');
     $('sheetHint').hidden = !stab; $('lightField').hidden = !stab; $('maxNote').hidden = !stab;
@@ -1167,7 +1169,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
 
   /* ---------- saving: claude.ai download, phone share sheet, or a normal browser download ---------- */
   const inClaude = !!(window.claude && typeof window.claude.use === 'function');
-  let downloads = null, pendingShare = null;
+  let downloads = null, pendingShare = null, saving = false;
   const useShare = (() => {
     try {
       if (inClaude || !navigator.share || !navigator.canShare || typeof File !== 'function') return false;
@@ -1208,7 +1210,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
     if (S.out === 'chart' && (!S.chart || !S.chart.crosses)) { setStatus(t('chartEmpty'), 'err'); return; }
     const btn = kind === 'pdf' ? $('savePdf') : $('savePng'), label = btn.textContent;
     $('savePdf').disabled = $('savePng').disabled = true; btn.textContent = t('preparing'); setStatus('');
-    pendingShare = null; $('shareWrap').hidden = true;
+    pendingShare = null; $('shareWrap').hidden = true; saving = true;
     try {
       await nextFrame();
       let blob, filename;
@@ -1243,6 +1245,7 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
       else if (['unavailable', 'not_granted', 'capability_disabled', 'capability_removed', 'extension_not_enabled'].includes(code)) { downloads = null; updateSaveUI(); }
       else { console.error(e); setStatus(t('failed'), 'err'); }
     } finally {
+      saving = false;
       btn.textContent = label;
       $('savePdf').disabled = $('savePng').disabled = !canSave();
     }
@@ -1397,6 +1400,15 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
     el.addEventListener('input', () => { S[key] = parseFloat(el.value); syncOutputs(); schedule(); });
   }
 
+  // Reads a typed number; accepts "18,5" and Arabic digits. Returns NaN when empty.
+  function readNum(id) {
+    const raw = String($(id).value).trim()
+      .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+      .replace(/[\u06F0-\u06F9]/g, (d) => String(d.charCodeAt(0) - 0x06F0))
+      .replace(/[,\u066B]/g, '.');
+    return raw === '' ? NaN : parseFloat(raw);
+  }
+
   function setWidth(v, from) {
     if (!isFinite(v)) return;
     S.widthCm = clamp(v, 3, 40);
@@ -1457,12 +1469,14 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
     $('details').addEventListener('change', () => { S.details = $('details').checked; schedule(); });
     $('light').addEventListener('change', () => { S.light = $('light').checked; $('fbImg').hidden = true; updatePages(); });
 
-    $('widthNum').addEventListener('input', () => setWidth(parseFloat($('widthNum').value), 'num'));
-    $('widthNum').addEventListener('change', () => setWidth(parseFloat($('widthNum').value) || 22));
+    $('widthNum').addEventListener('input', () => { const v = readNum('widthNum'); if (v >= 3) setWidth(v, 'num'); });
+    $('widthNum').addEventListener('change', () => { const v = readNum('widthNum'); setWidth(isFinite(v) ? v : S.widthCm); });
     $('widthRange').addEventListener('input', () => setWidth(parseFloat($('widthRange').value), 'range'));
     $('fitOne').addEventListener('click', () => { const w = parseFloat($('fitOne').dataset.w); if (isFinite(w)) setWidth(w); });
-    $('chest').addEventListener('input', () => { const v = parseFloat($('chest').value); if (isFinite(v) && v >= 30) { S.chestCm = Math.min(90, v); drawPlacement(); } });
-    $('collar').addEventListener('input', () => { const v = parseFloat($('collar').value); if (isFinite(v) && v >= 0) { S.collarCm = Math.min(40, v); drawPlacement(); } });
+    $('chest').addEventListener('input', () => { const v = readNum('chest'); if (v >= 30) { S.chestCm = Math.min(90, v); drawPlacement(); } });
+    $('collar').addEventListener('input', () => { const v = readNum('collar'); if (v >= 0) { S.collarCm = Math.min(40, v); drawPlacement(); } });
+    $('chest').addEventListener('change', () => { $('chest').value = S.chestCm; });
+    $('collar').addEventListener('change', () => { $('collar').value = S.collarCm; });
 
     document.querySelectorAll('input[name="method"]').forEach((r) => r.addEventListener('change', () => { if (r.checked) { S.method = r.value; $('fbImg').hidden = true; updatePages(); setStatus(''); } }));
     $('savePdf').addEventListener('click', () => save('pdf'));

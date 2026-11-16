@@ -276,17 +276,17 @@ select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border
       <div class="field">
         <div class="field-top"><label for="widthNum" data-i18n="logoW"></label><span class="val" id="heightOut"></span></div>
         <div class="num">
-          <input type="number" id="widthNum" min="3" max="40" step="0.5" value="22" inputmode="decimal"><span class="unit" data-i18n="cm"></span>
+          <input type="text" id="widthNum" value="22" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="cm"></span>
           <input type="range" id="widthRange" min="5" max="35" step="0.5" value="22" data-i18n-aria="ariaWidth">
         </div>
       </div>
       <div class="field">
         <div class="field-top"><label for="chest" data-i18n="chest"></label></div>
-        <div class="num"><input type="number" id="chest" min="30" max="90" step="1" value="54" inputmode="decimal"><span class="unit" data-i18n="chestUnit"></span></div>
+        <div class="num"><input type="text" id="chest" value="54" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="chestUnit"></span></div>
       </div>
       <div class="field">
         <div class="field-top"><label for="collar" data-i18n="collar"></label></div>
-        <div class="num"><input type="number" id="collar" min="0" max="40" step="0.5" value="8" inputmode="decimal"><span class="unit" data-i18n="cm"></span></div>
+        <div class="num"><input type="text" id="collar" value="8" inputmode="decimal" autocomplete="off" dir="ltr"><span class="unit" data-i18n="cm"></span></div>
       </div>
     </div>
 
@@ -846,7 +846,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       exMsg: 'A made-up example so you can see how this works. Load your own logo to replace it.',
       pick: 'Choose image',
       orDrop: 'or drop or paste it here',
-      s1Hint: 'Use the sharpest version you can find. A black logo on white works best. A light logo on a dark background is flipped automatically.',
+      s1Hint: 'Use the sharpest version you can find. A black logo on white works best. If the logo is light on a dark background, the page swaps the colours for you.',
       notImage: "That file isn't an image. Choose a PNG or JPG.",
       cantOpen: "This image couldn't be opened. Save it as PNG or JPG and try again.",
       lowRes: 'Low resolution ({w} × {h} px). Edges may look soft; a bigger version or more Smoothing helps.',
@@ -899,7 +899,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       mWindow: 'Trace at a window',
       mWindowDesc: 'Tape the sheet behind the fabric against a bright window and draw over the lines with a water-erasable fabric pen. Light, thin fabrics only.',
       sheetLbl: 'Size of your embroidery paper', paperLbl: 'Paper',
-      sheetHint: 'Look at the pack. A4 (21 × 29.7 cm) is the usual size in Europe, for example Vlieseline Solufix. US Letter (21.6 × 27.9 cm) is the size of Sulky Stick’n Stitch and Pellon sheets.',
+      sheetHint: 'Look at the pack. A4 (21 × 29.7 cm) is the usual size in Europe, for example Vlieseline Solufix. US Letter (21.6 × 27.9 cm) is the size of Sulky Stick’n Stitch sheets.',
       light: 'Print lighter lines',
       lightHint: 'Puts less ink on the sheet, so less ink can run into the thread when you rinse.',
       inkWarn: 'Solid prints put a lot of ink on the embroidery paper, and it can stain light thread when you rinse it out. Outline or Shaded is safer.',
@@ -939,7 +939,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         '<b>Check the pack.</b> An inkjet printer is the safe choice. Use a laser printer only if the pack says it is allowed.',
         'Put <b>one sheet</b> in the tray so the printer prints on the <b>soft, fabric-like side</b>, not on the smooth backing paper.',
         'In the print dialog choose the sheet size from above, paper type <b>plain paper</b> and normal or draft quality.',
-        'Let the ink dry for a few minutes. Cut around the logo with about <b>1 cm</b> to spare, peel off the backing and press the sheet onto the pullover without stretching the knit.',
+        'Let the ink dry for a few minutes. Cut around the logo with about <b>1 cm</b> to spare. If the sheet is sticky, peel off the backing and press it onto the pullover without stretching the knit; if not, pin or tack it on.',
         'Line up the <b>grey ticks</b> with the middle of the pullover. A few loose stitches at the corners keep the sheet from shifting.',
         'When you are done, rinse it under <b>lukewarm running water</b> until the film is gone, then dry the pullover flat. Do not iron it before rinsing.'
       ],
@@ -950,7 +950,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         'The <b>grey ticks</b> at the edges mark the centre. Line them up with the middle of the pullover.'
       ],
       footOffline: 'Works without internet. Nothing you load here leaves this device.',
-      installHint: 'To keep it as an app on the iPhone: open this page in Safari, tap the Share button, then “Add to Home Screen”.',
+      installHint: 'To keep it as an app on the iPhone: open this page in Safari, tap the Share button, then “Add to Home Screen”. Open the new icon once while you have internet; after that it works offline.',
       m_stabilizer: 'washable embroidery paper', m_transfer: 'heat-transfer pen', m_window: 'trace at a window',
       pdfCheck: 'Check: this bar must measure exactly 5 cm',
       pdfLogo: 'Logo {w} x {h} cm. Print at 100% (Actual size), not Fit to page.',
@@ -970,10 +970,10 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       step1: 'الخطوة 1', step2: 'الخطوة 2', step3: 'الخطوة 3', step4: 'الخطوة 4',
       s1: 'تحميل الشعار',
       exName: 'صورة تجريبية',
-      exMsg: 'هذا مثال مُختلَق لتري كيف يعمل البرنامج. حمّلي شعارك ليحلّ مكانه.',
+      exMsg: 'هذا شعار تخيّلي لتري كيف يعمل البرنامج. حمّلي شعارك ليحلّ مكانه.',
       pick: 'اختيار صورة',
       orDrop: 'أو اسحبيها إلى هنا أو الصقيها',
-      s1Hint: 'استعملي أوضح نسخة تجدينها. أفضل نتيجة تكون مع شعار أسود على خلفية بيضاء. الشعار الفاتح على خلفية داكنة يُقلَب تلقائياً.',
+      s1Hint: 'استعملي أوضح نسخة تجدينها. أفضل نتيجة تكون مع شعار أسود على خلفية بيضاء. إذا كان الشعار فاتحاً على خلفية داكنة، تُعكس ألوانه تلقائياً.',
       notImage: 'هذا الملف ليس صورة. اختاري ملف PNG أو JPG.',
       cantOpen: 'تعذّر فتح هذه الصورة. احفظيها بصيغة PNG أو JPG ثم حاولي من جديد.',
       lowRes: 'دقّة الصورة منخفضة ({w} × {h} بكسل). قد تظهر الحواف غير واضحة؛ جرّبي نسخة أكبر أو زيدي التنعيم.',
@@ -993,7 +993,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       speck: 'حذف النقاط الأصغر من', speckHint: 'ويسدّ أيضاً الثقوب الصغيرة داخل الأشكال.',
       lineW: 'سماكة الخط', lineWHint: 'سماكة الخط المطبوع. الخطوط الرفيعة أسهل في التغطية بالخيط.',
       mm: 'ملم', cm: 'سم',
-      invert: 'شعار فاتح على خلفية داكنة', grid: 'إظهار شبكة 1 سم', details: 'تعليم الأماكن الصعبة',
+      invert: 'شعار فاتح على خلفية داكنة', grid: 'إظهار شبكة 1 سم', details: 'تمييز الأماكن الصعبة',
       dims: 'الشعار {w} × {h} سم',
       nothing: 'لم يظهر شيء. جرّبي حدّ الدُّكنة أو خيار «شعار فاتح على خلفية داكنة».',
       spots0: 'لا توجد أماكن صعبة', spots1: 'مكان صعب واحد', spotsN: 'الأماكن الصعبة: {n}',
@@ -1003,7 +1003,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       collar: 'المسافة تحت الياقة',
       ariaPlace: 'الكنزة وعليها الشعار بالمقاس الحقيقي',
       pullover: 'الكنزة', thread: 'الخيط', ariaSweater: 'لون الكنزة', ariaThread: 'لون الخيط',
-      c_black: 'أسود', c_charcoal: 'رمادي فحمي', c_grey: 'رمادي', c_navy: 'كحلي', c_forest: 'أخضر غامق', c_oxblood: 'خمري', c_offwhite: 'أبيض مطفأ',
+      c_black: 'أسود', c_charcoal: 'رمادي فحمي', c_grey: 'رمادي', c_navy: 'كحلي', c_forest: 'أخضر غامق', c_oxblood: 'خمري', c_offwhite: 'أبيض كريمي',
       s3Hint: 'أغلب الشعارات على الصدر عرضها بين 15 و25 سم. ثبّتي نسخة مطبوعة على ورق عادي فوق الكنزة بالدبابيس وانظري إليها في المرآة قبل أن تبدئي. الألوان على الشاشة تقريبية.',
       sizeWarn: 'بعرض {w} سم يصل الشعار إلى الخياطة الجانبية لكنزة عرضها {c} سم. جرّبي عرضاً أصغر.',
       s4: 'تجهيز ملف الطباعة',
@@ -1015,9 +1015,9 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       symLbl: 'شكل المربعات', symFill: 'ممتلئة', symCross: 'علامات ×', symHint: 'العلامات تستهلك حبراً أقل عند الطباعة.',
       overlay: 'إظهار شكل الشعار فوق المخطط', overlayHint: 'يبيّن أين تمرّ الحواف الحقيقية، لتكملي التفاصيل الدقيقة بالغرزة الخلفية.',
       zoom: 'حجم المربع', fit: 'ملاءمة', ariaChart: 'مخطط غرزة الصليب',
-      stats1: '{c} × {r} غرزة · عدد الصلبان {n}',
-      stats2: 'المقاس النهائي نحو {w} × {h} سم · {s} فتلات من {t} · نحو {k} (تقدير تقريبي)',
-      skein1: 'شلّة واحدة', skeinN: '{n} شلل',
+      stats1: '{c} × {r} غرزة · عدد غرز الصليب: {n}',
+      stats2: 'المقاس النهائي نحو {w} × {h} سم · عدد الفتلات: {s} من {t} · {k} (تقدير تقريبي)',
+      skein1: 'نحو شلّة واحدة', skeinN: 'عدد الشلل: نحو {n}',
       methodLegend: 'كيف ستنقلين النموذج إلى الكنزة؟',
       mStab: 'ورق تطريز يذوب في الماء', tagBest: 'الأفضل للكنزات',
       mStabDesc: 'يُباع أيضاً باسم water-soluble stabilizer أو stick and stitch. اطبعي النموذج على الورقة، الصقيها على الكنزة، طرّزي من خلالها، ثم اغسليها بالماء فتذوب. يصلح للأقمشة الداكنة والوبرية.',
@@ -1026,19 +1026,19 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       mWindow: 'الشفّ على النافذة',
       mWindowDesc: 'ثبّتي الورقة خلف القماش على نافذة مضيئة وارسمي فوق الخطوط بقلم قماش يزول بالماء. للأقمشة الفاتحة والرقيقة فقط.',
       sheetLbl: 'مقاس ورق التطريز عندك', paperLbl: 'الورق',
-      sheetHint: 'انظري إلى العبوة. مقاس A4 (21 × 29.7 سم) هو المعتاد في أوروبا، مثل Vlieseline Solufix. مقاس US Letter (21.6 × 27.9 سم) هو مقاس أوراق Sulky Stick’n Stitch و Pellon.',
+      sheetHint: 'انظري إلى العبوة. مقاس A4 (21 × 29.7 سم) هو المعتاد في أوروبا، مثل Vlieseline Solufix. مقاس US Letter (21.6 × 27.9 سم) هو مقاس أوراق Sulky Stick’n Stitch.',
       light: 'طباعة خطوط أفتح',
       lightHint: 'يضع حبراً أقل على الورقة، فيقلّ ما قد يسيل منه على الخيط عند الغسل.',
       inkWarn: 'الطباعة الممتلئة تضع حبراً كثيراً على ورق التطريز، وقد يصبغ الخيط الفاتح عند الغسل. «خطوط فقط» أو «مظلّل» أسلم.',
       portrait: 'بالطول', landscape: 'بالعرض',
-      sheet1: 'يكفي ورقة واحدة {p}، {o}.',
-      sheetN: 'يحتاج إلى {n} أوراق {p}، {o}. على كل ورقة علامات تبيّن أين تقصّين.',
-      page1: 'يكفي صفحة واحدة {p}، {o}.',
-      pageN: 'يحتاج إلى {n} صفحات {p}، {o}. على كل صفحة علامات تبيّن أين تقصّين وتلصقين.',
-      chart1: 'المخطط يكفيه صفحة واحدة {p}، {o}.',
-      chartN: 'المخطط يحتاج إلى {n} صفحات {p}، {o}. أرقام الغرز تبيّن كيف تتّصل الصفحات.',
+      sheet1: 'تكفي ورقة {p} واحدة، {o}.',
+      sheetN: 'عدد الأوراق المطلوبة: {n} ({p})، {o}. على كل ورقة علامات تبيّن أين تقصّين.',
+      page1: 'تكفي صفحة {p} واحدة، {o}.',
+      pageN: 'عدد الصفحات المطلوبة: {n} ({p})، {o}. على كل صفحة علامات تبيّن أين تقصّين وتلصقين.',
+      chart1: 'تكفي المخططَ صفحةُ {p} واحدة، {o}.',
+      chartN: 'عدد صفحات المخطط: {n} ({p})، {o}. أرقام الغرز تبيّن كيف تتّصل الصفحات.',
       maxNote: 'ورقة {p} واحدة تتّسع لشعار عرضه حتى {w} سم.',
-      fitOne: 'تصغيره ليكفي ورقة واحدة ({w} سم)',
+      fitOne: 'تصغيره ليتّسع في ورقة واحدة ({w} سم)',
       savePdf: 'حفظ PDF', savePng: 'حفظ PNG',
       pngHintLine: 'اطبعي من ملف PDF لأنه يحافظ على المقاس الحقيقي. ملف PNG للتعديل أو لبرنامج Ink/Stitch.',
       pngHintChart: 'ملف PDF يقسّم المخطط الكبير على عدة صفحات مع أرقام الغرز. ملف PNG يعرض المخطط كله في صورة واحدة.',
@@ -1066,8 +1066,8 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         '<b>اقرئي العبوة.</b> الطابعة النافثة للحبر (inkjet) هي الخيار الآمن. لا تستعملي طابعة الليزر إلا إذا كانت العبوة تسمح بذلك.',
         'ضعي <b>ورقة واحدة</b> في الطابعة بحيث تكون الطباعة على <b>الوجه الناعم الشبيه بالقماش</b>، لا على ورق الحماية الأملس.',
         'في نافذة الطباعة اختاري مقاس الورقة نفسه المحدّد في الأعلى، ونوع الورق <b>ورق عادي</b>، وجودة عادية أو مسودة.',
-        'اتركي الحبر يجفّ بضع دقائق. قصّي حول الشعار مع ترك نحو <b>1 سم</b>، انزعي ورق الحماية واضغطي الورقة على الكنزة من دون شدّ القماش.',
-        'اجعلي <b>العلامات الرمادية</b> على منتصف الكنزة. بضع غرز واسعة في الزوايا تمنع الورقة من التحرّك.',
+        'اتركي الحبر يجفّ بضع دقائق. قصّي حول الشعار مع ترك نحو <b>1 سم</b>. إذا كانت الورقة لاصقة فانزعي ورق الحماية واضغطيها على الكنزة من دون شدّ القماش، وإلا فثبّتيها بالدبابيس أو بغرز تسريج.',
+        'اجعلي <b>العلامات الرمادية</b> على منتصف الكنزة. بضع غرز تسريج في الزوايا تمنع الورقة من التحرّك.',
         'بعد الانتهاء اشطفي الكنزة تحت <b>ماء فاتر جارٍ</b> حتى تختفي الورقة تماماً، ثم جفّفيها مفرودة. لا تكويها قبل الشطف.'
       ],
       clPaper: 'قبل الطباعة',
@@ -1077,7 +1077,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         '<b>العلامات الرمادية</b> على الحواف تدلّ على المنتصف. اجعليها على منتصف الكنزة.'
       ],
       footOffline: 'يعمل من دون إنترنت. لا شيء مما تحمّلينه هنا يخرج من هذا الجهاز.',
-      installHint: 'لإبقائه كتطبيق على الآيفون: افتحي هذه الصفحة في Safari، اضغطي زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية».',
+      installHint: 'لإبقائه كتطبيق على الآيفون: افتحي هذه الصفحة في Safari، اضغطي زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية». افتحي الأيقونة الجديدة مرة واحدة والإنترنت متصل؛ بعدها يعمل من دون إنترنت.',
       m_stabilizer: 'ورق تطريز يذوب في الماء', m_transfer: 'قلم النقل بالكيّ', m_window: 'الشفّ على النافذة',
       pdfCheck: 'للتأكد: طول هذا الشريط يجب أن يكون 5 سم بالضبط',
       pdfLogo: 'الشعار {w} × {h} سم. اطبعي بنسبة 100% (الحجم الفعلي) وليس «ملاءمة الصفحة».',
@@ -1086,9 +1086,9 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       pdfTileSheet: 'الورقة {l} ({i} من {n}). قصّي على الخط المتقطّع وعلى الخط المتصل، ثم الصقي القطع حافةً إلى حافة حتى تلتقي خطوط الشعار.',
       pdfChart: 'مخطط غرزة الصليب',
       pdfCols: 'الأعمدة {a}-{b} من {c}، الصفوف {d}-{e} من {f}', pdfPage: 'الصفحة {i} من {n}',
-      pdfCross: '= غرزة صليب كاملة بخيط {t}، {s} فتلات',
-      pdfCount: 'مقاس القماش {c} ({p} غرزة في السنتيمتر). {a} × {b} غرزة، عدد الصلبان {n}. المقاس النهائي نحو {w} × {h} سم.',
-      pdfStart: 'ابدئي من المنتصف (الأسهم الحمراء). الخطوط العريضة تفصل بين كل 10 غرز. نحو {k} (تقدير تقريبي).'
+      pdfCross: '= غرزة صليب كاملة بخيط {t}، عدد الفتلات: {s}',
+      pdfCount: 'مقاس القماش {c} ({p} غرزة في السنتيمتر). {a} × {b} غرزة، عدد غرز الصليب: {n}. المقاس النهائي نحو {w} × {h} سم.',
+      pdfStart: 'ابدئي من المنتصف (الأسهم الحمراء). الخطوط العريضة تفصل بين كل 10 غرز. {k} (تقدير تقريبي).'
     }
   };
 
@@ -1439,7 +1439,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     for (let r = 0; r <= C.rows; r++) if (r % 10 === 0 || r === C.rows) { const y = oy + r * z; g.moveTo(ox, y); g.lineTo(ox + gw, y); }
     g.stroke();
 
-    g.fillStyle = '#5b6170'; g.font = '500 10px "IBM Plex Mono", ui-monospace, monospace';
+    g.fillStyle = '#5b6170'; g.font = '500 10px "IBM Plex Mono", ui-monospace, monospace'; g.direction = 'ltr';
     g.textAlign = 'center'; g.textBaseline = 'bottom';
     for (let c = 10; c <= C.cols; c += 10) g.fillText(String(c), ox + c * z, oy - 12);
     g.textAlign = 'right'; g.textBaseline = 'middle';
@@ -1554,9 +1554,10 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
       const fy = plan.ph - PM - FOOT + 6;
       doc.setDrawColor(43, 45, 51); doc.setFillColor(43, 45, 51); doc.setLineWidth(0.3);
-      if (S.sym === 'fill') doc.rect(PM, fy - 3, 3.5, 3.5, 'F');
-      else { doc.rect(PM, fy - 3, 3.5, 3.5, 'S'); doc.line(PM + 0.7, fy - 2.3, PM + 2.8, fy - 0.2); doc.line(PM + 2.8, fy - 2.3, PM + 0.7, fy - 0.2); }
-      pdfText(doc, t('pdfCross', { t: S.thread.name, s: n.strands }), PM + 5.5, fy, { bold: true, gray: 30, maxW: fullW - 5.5 });
+      const kx = rtl ? plan.pw - PM - 3.5 : PM; // the key square sits where reading starts
+      if (S.sym === 'fill') doc.rect(kx, fy - 3, 3.5, 3.5, 'F');
+      else { doc.rect(kx, fy - 3, 3.5, 3.5, 'S'); doc.line(kx + 0.7, fy - 2.3, kx + 2.8, fy - 0.2); doc.line(kx + 2.8, fy - 2.3, kx + 0.7, fy - 0.2); }
+      pdfText(doc, t('pdfCross', { t: S.thread.name, s: n.strands }), rtl ? kx - 2 : PM + 5.5, fy, { bold: true, gray: 30, align: al, maxW: fullW - 5.5 });
       pdfText(doc, t('pdfCount', { c: S.count, p: fmt(S.count / 2.54), a: C.cols, b: C.rows, n: C.crosses.toLocaleString('en-US'), w: fmt(n.wcm), h: fmt(n.hcm) }), sx, fy + 5, { align: al, maxW: fullW });
       pdfText(doc, t('pdfStart', { k: n.skeinText }), sx, fy + 9.5, { align: al, maxW: fullW });
     }
@@ -1662,7 +1663,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     // measurements
     const ann = light ? '#15171c' : '#ffffff';
     g.strokeStyle = ann; g.fillStyle = ann; g.lineWidth = 1; g.globalAlpha = 0.85;
-    g.font = '500 12px "IBM Plex Mono", ui-monospace, monospace';
+    g.font = '500 12px "IBM Plex Mono", ui-monospace, monospace'; g.direction = 'ltr';
     const dimY = top + lhc + 2.2;
     let [p1x, p1y] = P(left, dimY), [p2x] = P(left + lwc, dimY);
     g.beginPath(); g.moveTo(p1x, p1y); g.lineTo(p2x, p1y);
@@ -1721,6 +1722,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
   function updatePages() {
     if (!S.bbox) return;
+    if (!saving) { setStatus(''); pendingShare = null; $('shareWrap').hidden = true; }
     const p = paperName(), chart = S.out === 'chart', stab = !chart && S.method === 'stabilizer';
     $('paperLbl').textContent = t(stab ? 'sheetLbl' : 'paperLbl');
     $('sheetHint').hidden = !stab; $('lightField').hidden = !stab; $('maxNote').hidden = !stab;
@@ -1827,7 +1829,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
   /* ---------- saving: claude.ai download, phone share sheet, or a normal browser download ---------- */
   const inClaude = !!(window.claude && typeof window.claude.use === 'function');
-  let downloads = null, pendingShare = null;
+  let downloads = null, pendingShare = null, saving = false;
   const useShare = (() => {
     try {
       if (inClaude || !navigator.share || !navigator.canShare || typeof File !== 'function') return false;
@@ -1868,7 +1870,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     if (S.out === 'chart' && (!S.chart || !S.chart.crosses)) { setStatus(t('chartEmpty'), 'err'); return; }
     const btn = kind === 'pdf' ? $('savePdf') : $('savePng'), label = btn.textContent;
     $('savePdf').disabled = $('savePng').disabled = true; btn.textContent = t('preparing'); setStatus('');
-    pendingShare = null; $('shareWrap').hidden = true;
+    pendingShare = null; $('shareWrap').hidden = true; saving = true;
     try {
       await nextFrame();
       let blob, filename;
@@ -1903,6 +1905,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       else if (['unavailable', 'not_granted', 'capability_disabled', 'capability_removed', 'extension_not_enabled'].includes(code)) { downloads = null; updateSaveUI(); }
       else { console.error(e); setStatus(t('failed'), 'err'); }
     } finally {
+      saving = false;
       btn.textContent = label;
       $('savePdf').disabled = $('savePng').disabled = !canSave();
     }
@@ -2057,6 +2060,15 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     el.addEventListener('input', () => { S[key] = parseFloat(el.value); syncOutputs(); schedule(); });
   }
 
+  // Reads a typed number; accepts "18,5" and Arabic digits. Returns NaN when empty.
+  function readNum(id) {
+    const raw = String($(id).value).trim()
+      .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+      .replace(/[\u06F0-\u06F9]/g, (d) => String(d.charCodeAt(0) - 0x06F0))
+      .replace(/[,\u066B]/g, '.');
+    return raw === '' ? NaN : parseFloat(raw);
+  }
+
   function setWidth(v, from) {
     if (!isFinite(v)) return;
     S.widthCm = clamp(v, 3, 40);
@@ -2117,12 +2129,14 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     $('details').addEventListener('change', () => { S.details = $('details').checked; schedule(); });
     $('light').addEventListener('change', () => { S.light = $('light').checked; $('fbImg').hidden = true; updatePages(); });
 
-    $('widthNum').addEventListener('input', () => setWidth(parseFloat($('widthNum').value), 'num'));
-    $('widthNum').addEventListener('change', () => setWidth(parseFloat($('widthNum').value) || 22));
+    $('widthNum').addEventListener('input', () => { const v = readNum('widthNum'); if (v >= 3) setWidth(v, 'num'); });
+    $('widthNum').addEventListener('change', () => { const v = readNum('widthNum'); setWidth(isFinite(v) ? v : S.widthCm); });
     $('widthRange').addEventListener('input', () => setWidth(parseFloat($('widthRange').value), 'range'));
     $('fitOne').addEventListener('click', () => { const w = parseFloat($('fitOne').dataset.w); if (isFinite(w)) setWidth(w); });
-    $('chest').addEventListener('input', () => { const v = parseFloat($('chest').value); if (isFinite(v) && v >= 30) { S.chestCm = Math.min(90, v); drawPlacement(); } });
-    $('collar').addEventListener('input', () => { const v = parseFloat($('collar').value); if (isFinite(v) && v >= 0) { S.collarCm = Math.min(40, v); drawPlacement(); } });
+    $('chest').addEventListener('input', () => { const v = readNum('chest'); if (v >= 30) { S.chestCm = Math.min(90, v); drawPlacement(); } });
+    $('collar').addEventListener('input', () => { const v = readNum('collar'); if (v >= 0) { S.collarCm = Math.min(40, v); drawPlacement(); } });
+    $('chest').addEventListener('change', () => { $('chest').value = S.chestCm; });
+    $('collar').addEventListener('change', () => { $('collar').value = S.collarCm; });
 
     document.querySelectorAll('input[name="method"]').forEach((r) => r.addEventListener('change', () => { if (r.checked) { S.method = r.value; $('fbImg').hidden = true; updatePages(); setStatus(''); } }));
     $('savePdf').addEventListener('click', () => save('pdf'));
